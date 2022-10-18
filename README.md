@@ -15,3 +15,13 @@ And the game will start.
 In some puzzles you only need to provide the value that will be sent to the contract, in others the calldata, and in others both values.
 
 You can use [`evm.codes`](https://www.evm.codes/)'s reference and playground to work through this.
+
+# Explanation
+
+## Puzzle 1
+
+`34` : CALLVALUE
+
+`56` : JUMP
+
+`FD` : REVERT
