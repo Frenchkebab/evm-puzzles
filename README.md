@@ -123,3 +123,33 @@ RETURN
 ```
 
 We just bring the code from **Puzzle 7** and make the **runtime code** to **revert** under any circumstances.
+
+## PUzzle 9
+
+From instruction `00` ~ `06`, it checks if the size of `calldata` is bigger than **3 bytes**.
+
+> **condition 1** : calldata size > 3 bytes
+
+And from instruction `0A` to `0F`, the code checks if `CALLVALUE` \* `CALLDATASIZE` equals ot `0x08`.
+
+> **condition 2** : calldata size \* callvalue = 8
+
+**answer** : `0x01010101` (any arbitrary **4 bytes**), `2 wei`
+
+(Or this can by `0x0101010101010101` (any arbitrary **8 bytes**), `1 wei`)
+
+## Puzzle 10
+
+Instruction `00` ~ `06` : checks if `CODESIZE` (`1b`, `27` in dec) is greater than `CALLVALUE`.
+
+> **condition 1** : `CALLVALUE` < `27 wei`
+
+Instruction `09` ~ `0F` : checks if `CALLDATASIZE` is multiple of 3.
+
+> **condition 2** : `CALLDATASIZE` = `3` \* `n`
+
+Instruction `10` ~ `14` : checks if `CALLVALUE + 0x0A` equals to `0x19`
+
+> **condition 3** : `CALLVALUE` = `0x19 - 0x0A` -> `0x0f` (`15` in dec)
+
+**answer** : `0x010101` (any number that is multiple of `3`), `15 wei`
